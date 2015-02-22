@@ -1,4 +1,3 @@
-// var $ = require('jquery')(window);
 require('./vendor/angular.js');
 require('./vendor/angular-route.js')(window, angular);
 require('./controllers/MainCtrl.js')();
