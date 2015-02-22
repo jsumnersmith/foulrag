@@ -4,24 +4,40 @@
    <meta charset="UTF-8">
    <title>Foul Rag: A Literary Parsing Library</title>
    <script src="/js/bundle.js"></script>
+   <link rel="stylesheet" type="text/css" href="/css/site.css">
 </head>
 <body ng-app="foulrag" ng-controller="PoemController">
-<div class="container">
-
-    <!-- HEADER -->
-    <nav class="navbar navbar-inverse">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="/">Foul Rag</a>
+<div class="fr-container">
+    <header>
+      <div class="fr-header-banner inner">
+        <div class="fr-logo-container">
+          <a class="fr-logo-link" href="/">
+            <img class="fr-logo" src="/images/fr-logo-white.png">
+          </a>
         </div>
+      </div>
 
-        <!-- LINK TO OUR PAGES. ANGULAR HANDLES THE ROUTING HERE -->
-        <ul class="nav navbar-nav">
-            <li><a href="/poems">Poems</a></li>
-        </ul>
-    </nav>
+      <nav class="fr-nav">
+          <div class="inner">
+            <ul class="fr-nav-list">
+                <li class="fr-nav-list-item">
+                  <a href="/poems" class="fr-nav-link">Poems</a>
+                </li>
+                <li class="fr-nav-list-item">
+                  <a href="/collections" class="fr-nav-link">Collections</a>
+                </li>
+                <li class="fr-nav-list-item">
+                  <a href="/about" class="fr-nav-link">About</a>
+                </li>
+            </ul>
+          </div>
+      </nav>
+    </header>
+    <!-- HEADER -->
+
 
     <!-- ANGULAR DYNAMIC CONTENT -->
-    <div ng-view></div>
+    <div class="fr-content inner" ng-view></div>
 
 </div>
 </body>
