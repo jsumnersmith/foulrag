@@ -1,2 +1,7 @@
 <h3>Now I'm showing poems.</h3>
 <p>{{ tagline }}</p>
+<ul class="poems" ng-repeat="poem in poems">
+  <li>
+    <strong>{{poem.title}}</strong>, <em>{{poem.author}}</em>
+  </li>
+</ul>
