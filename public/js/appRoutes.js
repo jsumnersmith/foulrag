@@ -16,7 +16,7 @@ module.exports = function(){
       })
 
       // nerds page that will use the NerdController
-      .when('/parser', {
+      .when('/add', {
           templateUrl: '/views/parser.html',
           controller: 'ParserController'
       });

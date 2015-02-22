@@ -9239,7 +9239,7 @@ module.exports = function(){
       })
 
       // nerds page that will use the NerdController
-      .when('/parser', {
+      .when('/add', {
           templateUrl: '/views/parser.html',
           controller: 'ParserController'
       });
@@ -9254,10 +9254,8 @@ module.exports = function(){
 var $ = require('jquery');
 module.exports = function(){
   angular.module('MainCtrl', []).controller('MainController', function($scope, $http) {
-    $scope.tagline = 'To the moon and back!';
 
     $scope.poemForm = {};
-
     $scope.postPoem = function(){
       $http({
         method  : 'POST',
@@ -9276,7 +9274,15 @@ module.exports = function(){
 },{"jquery":"/Users/jsumnersmith/Sites/foulrag/node_modules/jquery/dist/jquery.js"}],"/Users/jsumnersmith/Sites/foulrag/public/js/controllers/ParserCtrl.js":[function(require,module,exports){
 module.exports = function(){
   angular.module('ParserCtrl', []).controller('ParserController', function($scope) {
-    $scope.tagline = 'Let us put a parser here.' ;
+    $scope.poemForm = {};
+    $scope.postPoem = function(){
+      $http({
+        method  : 'POST',
+        url     : '/api/poem',
+        data    : JSON.stringify($scope.poemForm)  // pass in data as strings
+        //headers : { 'Content-Type': 'application/x-www-form-urlencoded' }
+      })
+    }
   });
 }
 

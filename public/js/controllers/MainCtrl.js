@@ -1,10 +1,8 @@
 var $ = require('jquery');
 module.exports = function(){
   angular.module('MainCtrl', []).controller('MainController', function($scope, $http) {
-    $scope.tagline = 'To the moon and back!';
 
     $scope.poemForm = {};
-
     $scope.postPoem = function(){
       $http({
         method  : 'POST',
