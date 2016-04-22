@@ -3,12 +3,13 @@ require('./vendor/angular.js');
 require('./vendor/angular-route.js')(window, angular);
 require('./controllers/MainCtrl.js')();
 require('./controllers/PoemCtrl.js')();
+require('./controllers/PoemShowCtrl.js')();
 require('./controllers/ParserCtrl.js')();
 require('./services/PoemService.js')();
 require('./appRoutes.js')();
 require('./app.js')();
 
-},{"./app.js":"/Users/jsumnersmith/Sites/foulrag/public/js/app.js","./appRoutes.js":"/Users/jsumnersmith/Sites/foulrag/public/js/appRoutes.js","./controllers/MainCtrl.js":"/Users/jsumnersmith/Sites/foulrag/public/js/controllers/MainCtrl.js","./controllers/ParserCtrl.js":"/Users/jsumnersmith/Sites/foulrag/public/js/controllers/ParserCtrl.js","./controllers/PoemCtrl.js":"/Users/jsumnersmith/Sites/foulrag/public/js/controllers/PoemCtrl.js","./services/PoemService.js":"/Users/jsumnersmith/Sites/foulrag/public/js/services/PoemService.js","./vendor/angular-route.js":"/Users/jsumnersmith/Sites/foulrag/public/js/vendor/angular-route.js","./vendor/angular.js":"/Users/jsumnersmith/Sites/foulrag/public/js/vendor/angular.js"}],"/Users/jsumnersmith/Sites/foulrag/node_modules/jquery/dist/jquery.js":[function(require,module,exports){
+},{"./app.js":"/Users/jsumnersmith/Sites/foulrag/public/js/app.js","./appRoutes.js":"/Users/jsumnersmith/Sites/foulrag/public/js/appRoutes.js","./controllers/MainCtrl.js":"/Users/jsumnersmith/Sites/foulrag/public/js/controllers/MainCtrl.js","./controllers/ParserCtrl.js":"/Users/jsumnersmith/Sites/foulrag/public/js/controllers/ParserCtrl.js","./controllers/PoemCtrl.js":"/Users/jsumnersmith/Sites/foulrag/public/js/controllers/PoemCtrl.js","./controllers/PoemShowCtrl.js":"/Users/jsumnersmith/Sites/foulrag/public/js/controllers/PoemShowCtrl.js","./services/PoemService.js":"/Users/jsumnersmith/Sites/foulrag/public/js/services/PoemService.js","./vendor/angular-route.js":"/Users/jsumnersmith/Sites/foulrag/public/js/vendor/angular-route.js","./vendor/angular.js":"/Users/jsumnersmith/Sites/foulrag/public/js/vendor/angular.js"}],"/Users/jsumnersmith/Sites/foulrag/node_modules/jquery/dist/jquery.js":[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v2.1.3
  * http://jquery.com/
@@ -9217,7 +9218,7 @@ return jQuery;
 
 },{}],"/Users/jsumnersmith/Sites/foulrag/public/js/app.js":[function(require,module,exports){
 module.exports = function(){
-  angular.module('foulrag', ['ngRoute', 'appRoutes', 'MainCtrl', 'ParserCtrl', 'PoemCtrl',  'PoemService']);
+  angular.module('foulrag', ['ngRoute', 'appRoutes', 'MainCtrl', 'ParserCtrl', 'PoemCtrl', 'PoemShowCtrl',  'PoemService']);
 }
 
 },{}],"/Users/jsumnersmith/Sites/foulrag/public/js/appRoutes.js":[function(require,module,exports){
@@ -9232,13 +9233,16 @@ module.exports = function(){
           controller: 'MainController'
       })
 
-      // nerds page that will use the NerdController
       .when('/poems', {
           templateUrl: '/views/poems.html',
           controller: 'PoemController'
       })
 
-      // nerds page that will use the NerdController
+      .when('/poem/:id', {
+        templateUrl: '/views/poem.html',
+        controller: 'PoemShowController'
+      })
+
       .when('/add', {
           templateUrl: '/views/parser.html',
           controller: 'ParserController'
@@ -9295,6 +9299,17 @@ module.exports = function(){
       $scope.poems = data;
     });
 
+  });
+}
+
+},{}],"/Users/jsumnersmith/Sites/foulrag/public/js/controllers/PoemShowCtrl.js":[function(require,module,exports){
+module.exports = function(){
+  angular.module('PoemShowCtrl', []).controller('PoemShowController', function($scope, $http, $routeParams) {
+    $http.get('/api/poem/'+$routeParams.id).success(function(data) {
+      console.log("I was successful", data);
+      $scope.poem = data;
+      //$scope.lines = data.lines;
+    });
   });
 }
 

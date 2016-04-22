@@ -2,6 +2,6 @@
 <p>{{ tagline }}</p>
 <ul class="poems" ng-repeat="poem in poems">
   <li>
-    <strong>{{poem.title}}</strong>, <em>{{poem.author}}</em>
+    <a href="/poem/{{poem._id}}"><strong>{{poem.title}}</strong>, <em>{{poem.author}}</em></a>
   </li>
 </ul>

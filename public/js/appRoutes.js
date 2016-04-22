@@ -9,13 +9,16 @@ module.exports = function(){
           controller: 'MainController'
       })
 
-      // nerds page that will use the NerdController
       .when('/poems', {
           templateUrl: '/views/poems.html',
           controller: 'PoemController'
       })
 
-      // nerds page that will use the NerdController
+      .when('/poem/:id', {
+        templateUrl: '/views/poem.html',
+        controller: 'PoemShowController'
+      })
+
       .when('/add', {
           templateUrl: '/views/parser.html',
           controller: 'ParserController'

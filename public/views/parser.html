@@ -1,9 +1,24 @@
-<form ng-submit="postPoem()">
-  <input type="text" name="author" ng-model="poemForm.author"> Author <br/>
-  <input type="text" name="title"  ng-model="poemForm.title"> Title <br/>
-  <textarea  name="text"  ng-model="poemForm.text"> Enter Poem here </textarea><br/>
-  <input type="checkbox" name="indentOverflow" ng-model="poemForm.indentOverflow">Indent overflow of lines?<br/>
-  <input type="text" name="language"  ng-model="poemForm.language"> Language <br/>
+<form ng-submit="postPoem()" class="fr-form">
+  <fieldset>
+    <label for="author">Author</label>
+    <input type="text" name="author" ng-model="poemForm.author">
+  </fieldset>
+  <fieldset>
+    <label for="title">Title</label>
+    <input type="text" name="title"  ng-model="poemForm.title">
+  </fieldset>
+  <fieldset>
+    <label for="text">Enter Poem Text</label>
+    <textarea  name="text"  ng-model="poemForm.text"></textarea>
+  </fieldset>
+  <fieldset>
+    <label for="indentOverflow">Indent overflow?</label>
+    <input type="checkbox" name="indentOverflow" ng-model="poemForm.indentOverflow">
+  </fieldset>
+  <fieldset>
+    <label for="language">Language</label>
+    <input type="text" name="language"  ng-model="poemForm.language">
+  </fieldset>
   <button type="submit">
     Submit!
   </button>
